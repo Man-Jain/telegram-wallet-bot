@@ -1,0 +1,6 @@
+<b>Symbol -></b>
+<b>Token | </b><b>Price</b>
+{% for token in data %}
+<b>{{token['contract_ticker_symbol']}} -></b>
+<pre>{{token['balance'][0:8]}} | {{token['quote']}}</pre>
+{% endfor %}

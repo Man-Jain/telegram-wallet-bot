@@ -1,0 +1,8 @@
+<b>TxHash -></b>
+<b>To | </b><b>Value -></b>
+<b>Time</b>
+{% for transaction in data %}
+<b>{{transaction['tx_hash'][0:8]}} -></b>
+<pre>{{transaction['to_address'][0:8]}} | {{transaction['value'][0:8]}}</pre>
+<code>{{transaction['block_signed_at']}}</code>
+{% endfor %}

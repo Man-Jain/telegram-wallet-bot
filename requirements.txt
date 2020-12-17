@@ -1,0 +1,9 @@
+certifi==2020.12.5
+chardet==3.0.4
+idna==2.10
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+pyTelegramBotAPI==3.7.4
+pytz==2020.4
+requests==2.25.0
+urllib3==1.26.2

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import telebot
 import config
-import pb
 import datetime
 import pytz
 import json
@@ -26,6 +25,11 @@ def start_command(message):
     keyboard.row(
         telebot.types.InlineKeyboardButton(
             'Get Help ❓', callback_data='home'
+        )
+    )
+    keyboard.row(
+        telebot.types.InlineKeyboardButton(
+            'Powered by Covalent', callback_data='a'
         )
     )
     bot.send_message(

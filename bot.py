@@ -77,8 +77,11 @@ def set_user_address_handler(message):  # THIS FUNCTION
     def set_address(msg):
         # print('message', json.dumps(message))
         print(msg.from_user.id, msg.text)
-        set_user_address(msg.from_user.id, msg.text)
-        bot.send_message(msg.chat.id, 'Your Address Has been Registered')
+        if msg.text[0:2] == '0x':
+            set_user_address(msg.from_user.id, msg.text)
+            bot.send_message(msg.chat.id, 'Your Address Has been Registered')
+        else:
+            bot.send_message(msg.chat.id, 'Not a Correct Address. Please restart process and Enter Correct One')
     bot.register_next_step_handler(sent, set_address)
 
 @bot.callback_query_handler(func=lambda call: True)

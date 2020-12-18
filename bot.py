@@ -77,7 +77,7 @@ def set_user_address_handler(message):  # THIS FUNCTION
     def set_address(msg):
         # print('message', json.dumps(message))
         print(msg.from_user.id, msg.text)
-        if msg.text[0:2] == '0x':
+        if msg.text[0:2] == '0x' and len(msg.text) == 42:
             set_user_address(msg.from_user.id, msg.text)
             bot.send_message(msg.chat.id, 'Your Address Has been Registered')
         else:

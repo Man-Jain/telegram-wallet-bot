@@ -48,7 +48,7 @@ def get_user_address(userid):
             for user in users:
                 if user['user'] == userid:
                     address = user['address']
-    expect:
+    except:
         return ''
 
     return address

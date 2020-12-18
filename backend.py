@@ -52,25 +52,34 @@ def get_user_address(userid):
 
 def set_user_address(userid, address):
     users = []
-    with open('data.json', 'r') as file:
-        data = file.read()
-        print(data)
-        users = json.loads(data)['users']
+    try:
+        with open('data.json', 'r') as file:
+            data = file.read()
+            print(data)
+            users = json.loads(data)['users']
+            print(users)
+
+        finduser = get_user_address(userid)
+        if finduser:
+            for user in users:
+                if user['user'] == userid:
+                    user['address'] = address
+        else:
+            users.append({
+                'user': userid,
+                'address': address
+            })
         print(users)
-
-    finduser = get_user_address(userid)
-    if finduser:
-        for user in users:
-            if user['user'] == userid:
-                user['address'] = address
-    else:
+        
+        with open('data.json', 'w') as file:
+            file.write(json.dumps({'users': users}))
+    except:
         users.append({
-            'user': userid,
-            'address': address
-        })
-    print(users)
-
-    with open('data.json', 'w') as file:
-        file.write(json.dumps({'users': users}))
+                'user': userid,
+                'address': address
+            })
+        
+        with open('data.json', 'w') as file:
+            file.write(json.dumps({'users': users}))
 
     return address

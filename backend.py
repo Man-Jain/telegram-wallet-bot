@@ -41,12 +41,15 @@ def get_user_transactions(query):
 
 def get_user_address(userid):
     address = ''
-    with open('data.json') as file:
-        data = file.read()
-        users = json.loads(data)['users']
-        for user in users:
-            if user['user'] == userid:
-                address = user['address']
+    try:
+        with open('data.json') as file:
+            data = file.read()
+            users = json.loads(data)['users']
+            for user in users:
+                if user['user'] == userid:
+                    address = user['address']
+    expect:
+        return ''
 
     return address
 
